@@ -2,8 +2,15 @@ package Geeks;
 
 //create tree using preorder and in order traversal
 //https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
-//Inorder sequence: D B E A F C
 //Preorder sequence: A B D E C F
+//Inorder sequence: D B E A F C
+
+/*
+ pre: A B D E C F 
+in : D B E A F C 
+post : D E B F C A 
+*/
+//
 import java.util.Scanner;
 
 class Node2 {
@@ -35,9 +42,26 @@ public class CreateTreeUsingInPreOrder {
 	   Node2 root = createTree(pre,in,0,len-1);
 	    
 	    preorderTraversal(root);
+	    System.out.println();
 	    inOrderTraversal(root);
+	    System.out.println();
+	    postOrderTraversal(root);
 
 		}
+
+	private static void postOrderTraversal(Node2 root) {
+		// TODO Auto-generated method stub
+		
+		if(root == null) {
+			return;
+		}
+		
+	 
+	postOrderTraversal(root.left);
+	postOrderTraversal(root.right);
+	  System.out.print(root.data+" ");
+		
+	}
 
 	private static void inOrderTraversal(Node2 root) {
 		if(root == null) {
